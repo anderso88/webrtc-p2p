@@ -1,4 +1,4 @@
-const API_URL = https://script.google.com/macros/s/AKfycbyEgxI7N8dRjWnEWYD1OSUQ7fn-OLfyaZK91LzoLeynOtT3CIINKEYjmhbCdjYsP2mGcg/exec
+const API_URL = "https://script.google.com/macros/s/AKfycbyEgxI7N8dRjWnEWYD1OSUQ7fn-OLfyaZK91LzoLeynOtT3CIINKEYjmhbCdjYsP2mGcg/exec"
 async function fazerLogin() {
     let usuario = document.getElementById("usuario").value.trim();
     let senha = document.getElementById("senha").value.trim();
