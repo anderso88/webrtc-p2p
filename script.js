@@ -1,4 +1,4 @@
-const API_URL = "SUA_URL_DO_GOOGLE_SHEETS_AQUI"; // Cole a URL gerada pelo Apps Script
+const API_URL = "https://script.google.com/macros/s/AKfycbz0-Z53mKBmPAu1jYXU9lQGSqAIcv_zhEKXl17xrGGvAMoZl4XpHtrbI9ZJs6zohvhVew/exec"; // Cole a URL gerada pelo Apps Script
 
 async function fazerLogin() {
     let usuario = document.getElementById("usuario").value.trim();
