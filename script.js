@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbyEgxI7N8dRjWnEWYD1OSUQ7fn-OLfyaZK91LzoLeynOtT3CIINKEYjmhbCdjYsP2mGcg/exec";  // Substitua pela URL correta
+const API_URL = "https://script.google.com/macros/s/AKfycbzqZ8yEGPcTbCT2eK42Kvk0Tb7W4p8pydiM3oYU4IEUYsVKdcpl5yLFXESHi88ub_DbDA/exec";  // Substitua pela URL correta
 
 function validarLogin() {
     let usuario = document.getElementById("usuario").value.trim();
@@ -11,18 +11,23 @@ function validarLogin() {
     }
 
     fetch(API_URL)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro ao acessar a API. Status: " + response.status);
+            }
+            return response.json();
+        })
         .then(data => {
-            console.log("Dados recebidos:", data); // Exibir no console para depuração
+            console.log("Dados recebidos:", data); // Exibir os dados no console para depuração
 
             let usuarioValido = data.find(item => 
                 item.usuario.trim() === usuario && 
-                String(item.senha).trim() === senha && // Convertendo senha para string
-                item.empresa.trim().toLowerCase() === empresa.toLowerCase() // Ignorar diferença entre maiúsculas e minúsculas
+                item.senha.trim() === senha && 
+                item.empresa.trim() === empresa
             );
 
             if (usuarioValido) {
-                window.location.href = "https://" + usuarioValido.site; // Adicionando HTTPS para evitar erro
+                window.location.href = usuarioValido.site;
             } else {
                 alert("Usuário, senha ou empresa incorretos.");
             }
